@@ -1,0 +1,11 @@
+.footer {
+  max-width: 318px;
+  max-height: 18px;
+  margin-left: 80px;
+  padding: 0;
+}
+.footer_description {
+  color: #545454;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+}

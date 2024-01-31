@@ -1,0 +1,28 @@
+.page {
+  background-color: black;
+  color: white;
+}
+.page__section {
+  max-width: 882px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  margin: 0 auto;
+}
+.page__content {
+  margin: 0 200px 0 200px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 775px) {
+  .page__content {
+    margin: 0;
+    max-width: calc(100%-40px);
+  }
+}
+@media screen and (max-width: 480px) {
+  .page__content {
+    margin: 20px 0 20px 0;
+  }
+}
