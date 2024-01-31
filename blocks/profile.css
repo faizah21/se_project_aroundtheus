@@ -3,42 +3,66 @@
   align-items: center;
   padding-top: 40px;
 }
+
 .profile__name {
   display: flex;
   align-items: center;
   gap: 15px;
 }
+
 .profile__info {
   max-width: 415px;
-  max-height: 77px;
 }
+
 .profile__edit-button {
   background: transparent url(../images/EditButton.svg) center no-repeat;
   height: 24px;
   width: 24px;
-  border-color: white;
+  border: 1px solid #ffff;
 }
+.profile__edit-button:hover {
+  cursor: pointer;
+  border: 2px solid #000000;
+  box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.6);
+}
+
 .profile__add-button {
   background: transparent url(../images/AddButton.svg) center no-repeat;
   width: 150px;
   height: 50px;
   margin-left: auto;
-  border-color: white;
+  border: 2px solid #ffff;
+  border-radius: 2px;
 }
+
+.profile__add-button:hover {
+  cursor: pointer;
+  border: 2px solid #000000;
+  box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.6);
+}
+
 .profile__title {
   margin: 0;
   font-size: 42px;
   font-family: "Inter", Arial, sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   font-weight: 500;
   line-height: 48px;
 }
+
 .profile__description {
   margin: 0;
   line-height: 22px;
   font-family: "Inter", Arial, sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   font-weight: 400;
   font-size: 18px;
 }
+
 .profile__image {
   height: 120px;
   width: 120px;
@@ -52,20 +76,50 @@
   .profile {
     flex-direction: column;
   }
+
   .profile__info {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
   }
+
   .profile__title {
     font-size: 22px;
+    line-height: 27px;
   }
+
   .profile__description {
     text-align: center;
     width: 100%;
   }
+
   .profile__add-button {
+    margin: 0;
+  }
+}
+@media screen and (max-width: 320px) {
+  .profile {
+    gap: 30px;
+  }
+  
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+  }
+
+  .profile__add-button {
+    width: 282px;
+  }
+
+  .profile__description {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  .profile__image {
     margin: 0;
   }
 }
