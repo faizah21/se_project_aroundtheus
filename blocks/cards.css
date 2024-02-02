@@ -3,23 +3,17 @@
   margin-bottom: 72px;
 }
 
-.card__list {
+.cards__list {
   display: grid;
   justify-content: center;
   /* repeat every 282px because that's the size of each card */
   grid-template-columns: repeat(auto-fit, 282px);
-  grid-gap: 17px 20px;
+  grid-gap: 20px 17px;
   padding: 0;
   margin: 0;
 }
 
 @media screen and (max-width: 320px) {
-  .cards {
-    margin-bottom: 36px;
-  }
-}
-
-@media screen and (max-width: 1280px) {
   .cards {
     margin-bottom: 36px;
   }

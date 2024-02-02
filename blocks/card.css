@@ -4,6 +4,7 @@
   flex-direction: column;
   border-radius: 10px;
   overflow: hidden;
+
 }
 
 .card__image {
@@ -29,7 +30,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin: 20px 0;
 }
 
 .card__like-button {
@@ -42,31 +42,4 @@
 .card__like-button:hover {
   cursor: pointer;
   opacity: 0.5;
-}
-
-@media screen and (max-width: 1280px) {
-  .card__list {
-    grid-template-columns: repeat(auto-fit, 300px);
-  }
-  .card__image {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .card__list {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-@media screen and (max-width: 680px) {
-  .card__list {
-    grid-template-columns: repeat(auto-fit, 282px);
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .card__list {
-    grid-template-columns: repeat(auto-fit, 282px);
-  }
 }
