@@ -13,7 +13,7 @@
   margin: 0;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 580px) {
   .cards {
     margin-bottom: 36px;
   }

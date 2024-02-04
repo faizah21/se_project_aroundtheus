@@ -2,26 +2,20 @@
   padding: 0;
   margin-bottom: 0;
   width: 100%;
-
 }
 
 .footer__description {
-  margin-bottom: 30px;
   color: #545454;
   max-width: 318px;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-}
-@media screen and (max-width: 580px) {
-  .footer {
-    margin-left: 20px;
-  }
+  margin-top: 0;
 }
 
-@media screen and (max-width: 320px) {
-  .footer_description {
+@media screen and (max-width: 580px) {
+  .footer__description {
     font-size: 14px;
     line-height: 17px;
   }

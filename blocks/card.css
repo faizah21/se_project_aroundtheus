@@ -4,7 +4,6 @@
   flex-direction: column;
   border-radius: 10px;
   overflow: hidden;
-
 }
 
 .card__image {
@@ -16,9 +15,8 @@
   display: flex;
   background-color: white;
   color: black;
-  justify-content: space-between;
+  gap: 28px;
   align-items: center;
-  padding: 0 20px;
 }
 
 .card__title {
@@ -30,6 +28,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  margin: 25px 0 25px 20px;
 }
 
 .card__like-button {
