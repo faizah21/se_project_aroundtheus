@@ -1,6 +1,5 @@
 .cards {
   margin-top: 30px;
-  margin-bottom: 72px;
 }
 
 .cards__list {
@@ -11,10 +10,4 @@
   grid-gap: 20px 17px;
   padding: 0;
   margin: 0;
-}
-
-@media screen and (max-width: 580px) {
-  .cards {
-    margin-bottom: 36px;
-  }
 }

@@ -16,7 +16,9 @@
   background-color: white;
   color: black;
   gap: 28px;
+  justify-content: space-between;
   align-items: center;
+  padding-right: 20px;
 }
 
 .card__title {
@@ -33,7 +35,7 @@
 
 .card__like-button {
   background: transparent url(../images/heart.svg) center no-repeat;
-  width: 21px;
+  min-width: 21px;
   height: 18px;
   border: none;
 }
@@ -41,4 +43,11 @@
 .card__like-button:hover {
   cursor: pointer;
   opacity: 0.5;
+}
+
+@media screen and (max-width: 885px) {
+  .cards {
+    padding: 0;
+    margin-left: 0;
+  }
 }

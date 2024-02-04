@@ -1,7 +1,8 @@
 .footer {
   padding: 0;
-  margin-bottom: 0;
   width: 100%;
+  margin-top: 67px;
+  margin-bottom: 60px;
 }
 
 .footer__description {
@@ -11,10 +12,14 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  margin-top: 0;
+  margin: 0;
 }
 
 @media screen and (max-width: 580px) {
+  .footer {
+    padding-left: 19px;
+    margin-bottom: 36px;
+  }
   .footer__description {
     font-size: 14px;
     line-height: 17px;
