@@ -66,9 +66,7 @@ profileEditBtn.addEventListener("click", () => {
   profileEditModal.classList.add("modal_opened");
 });
 
-closeProfileModal.addEventListener("click", () => {
-  closePopup();
-});
+closeProfileModal.addEventListener("click", closePopup);
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
@@ -76,4 +74,3 @@ initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 });
-closePopup();
