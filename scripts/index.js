@@ -53,7 +53,7 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-function handleProfileEditSubmit() {
+function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
@@ -76,3 +76,4 @@ initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 });
+closePopup();
