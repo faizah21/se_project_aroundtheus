@@ -106,10 +106,10 @@ function handleProfileEditSubmit(e) {
 
 function handleAddCardFormSubmit(e) {
   e.preventDefault();
+  e.target.reset();
   const name = cardTitleInput.value;
   const link = cardTitleUrl.value;
   renderCard({ name, link }, cardsWrapper);
-
   closeModal(addCardModal);
 }
 
