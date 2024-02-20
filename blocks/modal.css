@@ -157,6 +157,5 @@
     bottom: calc(100% + 10px);
     left: calc(100% - 33px);
   }
-  .modal__container {
-  }
+ 
 }
