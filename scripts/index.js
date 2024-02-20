@@ -120,7 +120,7 @@ addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 profileEditBtn.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  profileEditModal.classList.add("modal_opened");
+  openModal(profileEditModal);
 });
 
 closeProfileModal.addEventListener("click", () => closeModal(profileEditModal));
