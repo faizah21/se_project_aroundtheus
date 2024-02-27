@@ -1,0 +1,25 @@
+.popup__button_disabled {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.2);
+}
+.popup__input_type_error {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid rgba(255, 0, 0, 1);
+  padding-right: 270px;
+}
+.popup__error_visible {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  color: rgba(255, 0, 0, 1);
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .popup__input_type_error {
+    padding-right: 110px;
+  }
+}

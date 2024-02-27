@@ -67,6 +67,7 @@
   padding-bottom: 14px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-right: 270px;
 }
 
 .modal__button {
@@ -107,6 +108,9 @@
   line-height: 14px;
 }
 
+.modal__field__container {
+  position: relative;
+}
 @media screen and (max-width: 600px) {
   .modal__container {
     width: 282px;
@@ -116,8 +120,8 @@
 
   .modal__field {
     height: 27px;
-    /* padding: 0; */
     height: 27px;
+    padding-right: 120px;
   }
 
   .modal__heading {
@@ -157,5 +161,4 @@
     bottom: calc(100% + 10px);
     left: calc(100% - 33px);
   }
- 
 }
