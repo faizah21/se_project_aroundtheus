@@ -43,13 +43,20 @@
   height: 40px;
 }
 
-modal__close:hover {
-  cursor: pointer;
-}
-
 .modal__button:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal__button:hover:not(:disabled) {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.modal__button:hover:disabled {
+  opacity: 0.2;
+  cursor: default;
+
 }
 
 .modal__form {

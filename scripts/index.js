@@ -67,7 +67,7 @@ const modal = document.querySelectorAll(".modal__container");
 //functions- modals:
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  document.addEventListener("keydown", closeModalByEscape);
+  document.removeEventListener("keydown", closeModalByEscape);
 }
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -167,10 +167,9 @@ closeImageModal.addEventListener("click", () => {
 //add new card button
 addNewCardBtn.addEventListener("click", () => openModal(addCardModal));
 
-
 function closeModalByEscape(evt) {
   if (evt.key === "Escape") {
-    //search for opened modal 
+    //search for opened modal
     const openedModal = document.querySelector(".modal_opened");
     closeModal(openedModal);
   }
