@@ -67,9 +67,11 @@ const modal = document.querySelectorAll(".modal__container");
 //functions- modals:
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.addEventListener("keydown", closeModalByEscape);
 }
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalByEscape);
 }
 
 //rendereing the card data
@@ -142,23 +144,21 @@ profileEditBtn.addEventListener("click", () => {
 
 //modal open and close
 
-profileEditModal.addEventListener("click", (evt) => {
+//fix duplicated code:
+function closeModalOnRemoteClick(evt) {
   if (
-    evt.target.classList.contains("modal_opened") ||
+    evt.target === evt.currentTarget ||
     evt.target.classList.contains("modal__close")
   ) {
-    closeModal(profileEditModal);
+    console.log(evt.target);
+    closeModal(evt.target);
   }
-});
+}
+profileEditModal.addEventListener("mousedown", closeModalOnRemoteClick);
 
-addCardModal.addEventListener("click", (evt) => {
-  if (
-    evt.target.classList.contains("modal_opened") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closeModal(addCardModal);
-  }
-});
+addCardModal.addEventListener("mousedown", closeModalOnRemoteClick);
+
+closeImageModal.addEventListener("mousedown", closeModalOnRemoteClick);
 
 closeImageModal.addEventListener("click", () => {
   closeModal(imageModal);
@@ -167,10 +167,20 @@ closeImageModal.addEventListener("click", () => {
 //add new card button
 addNewCardBtn.addEventListener("click", () => openModal(addCardModal));
 
-document.addEventListener("keydown", function (evt) {
+
+function closeModalByEscape(evt) {
   if (evt.key === "Escape") {
-    closeModal(profileEditModal);
-    closeModal(addCardModal);
-    closeModal(imageModal);
+    //search for opened modal 
+    const openedModal = document.querySelector(".modal_opened");
+    closeModal(openedModal);
   }
-});
+}
+
+// profileEditModal.addEventListener("click", (evt) => {
+//   if (
+//     evt.target.classList.contains("modal_opened") ||
+//     evt.target.classList.contains("modal__close")
+//   ) {
+//     closeModal(profileEditModal);
+//   }
+// });

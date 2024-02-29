@@ -27,8 +27,8 @@ function checkInputValidity(formEl, inputEl, options) {
 }
 
 function setEventListeners(formEl, options) {
-  const { inputSelector } = options;
-  const submitButton = formEl.querySelector(".popup__button");
+  const { inputSelector, submitButtonSelector } = options;
+  const submitButton = formEl.querySelector(submitButtonSelector);
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
@@ -63,4 +63,3 @@ function enableValidation(options) {
 }
 
 enableValidation(config);
-
