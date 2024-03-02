@@ -130,6 +130,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
+  // profileFormValidate.resetValidation(); 
   closeModal(profileEditModal);
 }
 
@@ -149,10 +150,10 @@ addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 //open modal for profile
 profileEditBtn.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-
-  profileDescriptionInput.value = profileDescription.textContent;
   openModal(profileEditModal);
+  // profileFormValidate.resetValidation();
+  profileTitleInput.value = profileTitle.textContent;
+  profileDescriptionInput.value = profileDescription.textContent;
 });
 
 //modal open and close
@@ -201,7 +202,7 @@ const profileFormValidate = new FormValidator("#profile-form", config);
 const cardFormValidate = new FormValidator("#add-card-form", config);
 
 profileFormValidate.enableValidation();
-profileFormValidate.resetValidation();
+// profileFormValidate.resetValidation();
 cardFormValidate.enableValidation();
 
 // profileEditModal.addEventListener("click", (evt) => {
