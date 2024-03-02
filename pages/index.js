@@ -1,3 +1,5 @@
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -56,6 +58,8 @@ const cardTitleUrl = addCardFormElement.querySelector(".modal__input_type_url");
 //modal selectors
 const closeProfileModal = document.querySelector("#modal-close");
 const imageModal = document.querySelector("#image-modal");
+const modalImageElement = imageModal.querySelector(".modal__image");
+const modalDescription = imageModal.querySelector(".modal__description");
 const imageOpenedModal = document.querySelector("#add-card-modal");
 const closeImageModal = document.querySelector("#close-image");
 const addCardModalCloseButton = document.querySelector(
@@ -64,33 +68,25 @@ const addCardModalCloseButton = document.querySelector(
 const addCardModal = document.querySelector("#add-card-modal");
 const modal = document.querySelectorAll(".modal__container");
 
-//functions- modals:
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", closeModalByEscape);
-}
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", closeModalByEscape);
-}
-
 //rendereing the card data
 function renderCard(cardData, wrapper) {
-  const cardElement = getCardElement(cardData);
-  wrapper.prepend(cardElement);
+  const card = new Card(
+    cardData,
+    "#card-template",
+    handleImageClick
+  ).generateCard();
+
+  wrapper.prepend(card);
 }
+
 initialCards.forEach((cardData) => renderCard(cardData, cardsWrapper));
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
 
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
+  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
 
   //delete card
   cardDeleteButton.addEventListener("click", () => {
@@ -110,6 +106,23 @@ function getCardElement(cardData) {
   });
 
   return cardElement;
+}
+
+function handleImageClick(imageData) {
+  openModal(imageModal);
+  modalDescription.textContent = this._name;
+  modalImageElement.src = this._link;
+  modalImageElement.alt = this._name;
+}
+
+//functions- modals:
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", closeModalByEscape);
+}
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", closeModalByEscape);
 }
 
 //handlers for submitting form
@@ -174,6 +187,22 @@ function closeModalByEscape(evt) {
     closeModal(openedModal);
   }
 }
+
+const config = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+const profileFormValidate = new FormValidator("#profile-form", config);
+const cardFormValidate = new FormValidator("#add-card-form", config);
+
+profileFormValidate.enableValidation();
+profileFormValidate.resetValidation();
+cardFormValidate.enableValidation();
 
 // profileEditModal.addEventListener("click", (evt) => {
 //   if (
