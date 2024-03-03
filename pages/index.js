@@ -130,7 +130,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  // profileFormValidate.resetValidation(); 
+  // profileFormValidate.resetValidation();
   closeModal(profileEditModal);
 }
 
@@ -157,14 +157,40 @@ profileEditBtn.addEventListener("click", () => {
 });
 
 //modal open and close
+function closeModalByEscape(evt) {
+  if (evt.key === "Escape") {
+    //search for opened modal
+    const openedModal = document.querySelector(".modal_opened");
+    closeModal(openedModal);
+  }
+}
 
-//fix duplicated code:
+function closeModalOnClick(evt, element) {
+  if (
+    evt.target.classList.contains("modal_opened") ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closeModal(element);
+  }
+}
+profileEditModal.addEventListener("click", (evt) => {
+  closeModalOnClick(evt, profileEditModal);
+});
+
+addCardModal.addEventListener("click", (evt) => {
+  closeModalOnClick(evt, addCardModal);
+});
+
+imageModal.addEventListener("click", (evt) => {
+  closeModalOnClick(evt, imageModal);
+});
+
+// fix duplicated code:
 function closeModalOnRemoteClick(evt) {
   if (
     evt.target === evt.currentTarget ||
     evt.target.classList.contains("modal__close")
   ) {
-    console.log(evt.target);
     closeModal(evt.target);
   }
 }
@@ -181,14 +207,6 @@ closeImageModal.addEventListener("click", () => {
 //add new card button
 addNewCardBtn.addEventListener("click", () => openModal(addCardModal));
 
-function closeModalByEscape(evt) {
-  if (evt.key === "Escape") {
-    //search for opened modal
-    const openedModal = document.querySelector(".modal_opened");
-    closeModal(openedModal);
-  }
-}
-
 const config = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -204,12 +222,3 @@ const cardFormValidate = new FormValidator("#add-card-form", config);
 profileFormValidate.enableValidation();
 // profileFormValidate.resetValidation();
 cardFormValidate.enableValidation();
-
-// profileEditModal.addEventListener("click", (evt) => {
-//   if (
-//     evt.target.classList.contains("modal_opened") ||
-//     evt.target.classList.contains("modal__close")
-//   ) {
-//     closeModal(profileEditModal);
-//   }
-// });
