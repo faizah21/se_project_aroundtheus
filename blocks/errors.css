@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   border-bottom: 1px solid rgba(255, 0, 0, 1);
-  padding-right: 270px;
+  width: 100%;
 }
 .popup__error_visible {
   font-family: Inter, Arial, sans-serif;
@@ -16,10 +16,4 @@
   position: absolute;
   top: calc(100% + 5px);
   left: 0;
-}
-
-@media screen and (max-width: 600px) {
-  .popup__input_type_error {
-    padding-right: 110px;
-  }
 }

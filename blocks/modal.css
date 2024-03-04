@@ -73,7 +73,7 @@
   padding-bottom: 14px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding-right: 270px;
+  width: 100%;
 }
 
 .modal__button {
@@ -127,7 +127,6 @@
   .modal__field {
     height: 27px;
     height: 27px;
-    padding-right: 120px;
   }
 
   .modal__heading {

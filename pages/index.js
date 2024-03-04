@@ -68,6 +68,7 @@ const addCardModalCloseButton = document.querySelector(
 const addCardModal = document.querySelector("#add-card-modal");
 const modal = document.querySelectorAll(".modal__container");
 
+
 //rendereing the card data
 function renderCard(cardData, wrapper) {
   const card = new Card(
