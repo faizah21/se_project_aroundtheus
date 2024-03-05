@@ -66,7 +66,6 @@ const addCardModalCloseButton = document.querySelector(
   "#profile-card-modal-close"
 );
 const addCardModal = document.querySelector("#add-card-modal");
-const modal = document.querySelectorAll(".modal__container");
 
 //rendereing the card data
 function renderCard(cardData, wrapper) {
@@ -172,11 +171,8 @@ const config = {
   errorClass: "popup__error_visible",
 };
 
-const profileForm = document.querySelector("#profile-form");
-const cardForm = document.querySelector("#add-card-form");
-
-const profileFormValidate = new FormValidator(profileForm, config);
-const cardFormValidate = new FormValidator(cardForm, config);
+const profileFormValidate = new FormValidator(profileEditForm, config);
+const cardFormValidate = new FormValidator(addCardFormElement, config);
 
 profileFormValidate.enableValidation();
 // profileFormValidate.resetValidation();
