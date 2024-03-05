@@ -1,5 +1,6 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -48,7 +49,7 @@ const addCardFormElement = document.querySelector("#add-card-form");
 const cardsWrapper = document.querySelector(".cards__list");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
-const buttonSubmit = addCardFormElement.querySelector(".modal__button");
+
 const cardTitleInput = addCardFormElement.querySelector(
   ".modal__input_type_title"
 );
@@ -110,11 +111,9 @@ function handleAddCardFormSubmit(e) {
   const name = cardTitleInput.value;
   const link = cardTitleUrl.value;
   renderCard({ name, link }, cardsWrapper);
-
-  buttonSubmit.classList.add("popup__button_disabled");
-  buttonSubmit.disabled = true;
   closeModal(addCardModal);
   e.target.reset();
+  cardFormValidate.toggleButtonState();
 }
 
 //form listeners
@@ -128,6 +127,7 @@ profileEditBtn.addEventListener("click", () => {
   // profileFormValidate.resetValidation();
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
+  profileFormValidate.enableValidation();
 });
 
 //modal open and close
@@ -163,17 +163,17 @@ imageModal.addEventListener("click", (evt) => {
 addNewCardBtn.addEventListener("click", () => openModal(addCardModal));
 
 const config = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
 };
-
 const profileFormValidate = new FormValidator(profileEditForm, config);
+
 const cardFormValidate = new FormValidator(addCardFormElement, config);
 
-profileFormValidate.enableValidation();
 // profileFormValidate.resetValidation();
+
 cardFormValidate.enableValidation();

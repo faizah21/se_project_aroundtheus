@@ -43,7 +43,7 @@
   height: 40px;
 }
 
-.modal__button:hover:not(:disabled) {
+.modals__button:hover:not(:disabled) {
   opacity: 0.8;
   cursor: pointer;
 }
@@ -76,7 +76,7 @@
   width: 100%;
 }
 
-.modal__button {
+.modals__button {
   font-family: Inter, Arial, sans-serif;
   line-height: 22px;
   font-size: 18px;
@@ -127,6 +127,7 @@
   .modal__field {
     height: 27px;
     height: 27px;
+    padding-right: 120px;
   }
 
   .modal__heading {
@@ -147,7 +148,7 @@
     left: calc(100% - -4px);
     transform: rotate(90deg);
   }
-  .modal__button {
+  .modals__button {
     font-size: 14px;
     line-height: 17px;
     text-align: center;
