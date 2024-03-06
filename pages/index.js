@@ -127,7 +127,6 @@ profileEditBtn.addEventListener("click", () => {
   // profileFormValidate.resetValidation();
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  profileFormValidate.enableValidation();
 });
 
 //modal open and close
@@ -177,3 +176,4 @@ const cardFormValidate = new FormValidator(addCardFormElement, config);
 // profileFormValidate.resetValidation();
 
 cardFormValidate.enableValidation();
+profileFormValidate.enableValidation();
