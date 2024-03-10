@@ -18,6 +18,7 @@ const profileDescriptionInput = document.querySelector(
   ".profile__description__input"
 );
 const profileEditForm = profileEditModal.querySelector(".modal__form");
+
 //card selectors
 const addNewCardBtn = document.querySelector(".profile__add-button");
 const addCardFormElement = document.querySelector("#add-card-form");
@@ -40,9 +41,6 @@ const modalImageElement = imageModal.querySelector(".modal__image");
 const modalDescription = imageModal.querySelector(".modal__description");
 const imageOpenedModal = document.querySelector("#add-card-modal");
 const closeImageModal = document.querySelector("#close-image");
-const addCardModalCloseButton = document.querySelector(
-  "#profile-card-modal-close"
-);
 const addCardModal = document.querySelector("#add-card-modal");
 
 function renderCard(cardData) {
@@ -70,72 +68,16 @@ function handleImageClick(imageName, imageLink) {
 
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
-//modal open and close
-function closeModalByEscape(evt) {
-  if (evt.key === "Escape") {
-    //search for opened modal
-    const openedModal = document.querySelector(".modal_opened");
-    closeModal(openedModal);
-  }
-}
-
-function closeModalOnClick(evt, element) {
-  if (
-    evt.target.classList.contains("modal_opened") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closeModal(element);
-  }
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", closeModalByEscape);
-}
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", closeModalByEscape);
-}
-
-profileEditModal.addEventListener("click", (evt) => {
-  closeModalOnClick(evt, profileEditModal);
-});
-
-addCardModal.addEventListener("click", (evt) => {
-  closeModalOnClick(evt, addCardModal);
-});
-
-imageModal.addEventListener("click", (evt) => {
-  closeModalOnClick(evt, imageModal);
-});
-
 //add new card button
 
 const profileFormValidate = new FormValidator(profileEditForm, config);
 
 const cardFormValidate = new FormValidator(addCardFormElement, config);
 
-// profileFormValidate.resetValidation();
-
 cardFormValidate.enableValidation();
 profileFormValidate.enableValidation();
 
 //NEw Code for opening popup
-const profileEditPopup = new PopupWithForm({
-  popupSelector: "#profile-edit-modal",
-  handleFormSubmit: (data) => {
-    handleProfileEditSubmit(data);
-  },
-});
-profileEditPopup.setEventListeners();
-
-//open modal for profile
-profileEditBtn.addEventListener("click", () => {
-  profileEditPopup.open();
-  // profileFormValidate.resetValidation();
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-});
 
 const cardPopup = new PopupWithForm({
   popupSelector: "#add-card-modal",
@@ -146,6 +88,9 @@ const cardPopup = new PopupWithForm({
 
 addNewCardBtn.addEventListener("click", () => {
   cardPopup.open();
+});
+cardPopup._closeButton.addEventListener("click", () => {
+  cardPopup.close();
 });
 
 function handleAddCardFormSubmit(e) {
@@ -165,13 +110,18 @@ const userInfo = new UserInfo({
   jobSelector: ".profile__description",
 });
 
-function handleProfileEditSubmit(evt) {
-  evt.preventDefault();
+function handleProfileEditSubmit(formData) {
   const newName = profileTitleInput.value;
   const newJob = profileDescriptionInput.value;
   userInfo.setUserInfo({ name: newName, job: newJob });
   profileEditPopup.close();
 }
+
+const profileEditPopup = new PopupWithForm({
+  popupSelector: "#profile-edit-modal",
+  handleFormSubmit: handleProfileEditSubmit,
+});
+profileEditPopup.setEventListeners();
 
 profileEditBtn.addEventListener("click", () => {
   const { name, job } = userInfo.getUserInfo();
@@ -181,5 +131,7 @@ profileEditBtn.addEventListener("click", () => {
 });
 
 profileEditForm.addEventListener("submit", (evt) => {
-  handleProfileEditSubmit(evt);
+  evt.preventDefault();
+  const formData = profileEditPopup._getInputValues();
+  profileEditPopup._handleFormSubmit(formData);
 });

@@ -13,7 +13,6 @@ class FormValidator {
     this._inputElements = [
       ...this._formElement.querySelectorAll(this._inputSelector),
     ];
-    this._formOptions = config;
   }
 
   enableValidation() {
@@ -72,16 +71,7 @@ class FormValidator {
     this._errorMessageEl.textContent = "";
     this._errorMessageEl.classList.remove(this._errorClass);
   }
-  // resetValidation() {
-  //   this._inputElements.forEach((inputEl) => {
-  //     this._hideInputError(inputEl, this._formOptions);
-  //   });
-  //   this.toggleButtonState(
-  //     this._inputElements,
-  //     this._submitButton,
-  //     this._formOptions
-  //   );
-  // }
+
 }
 
 export default FormValidator;
