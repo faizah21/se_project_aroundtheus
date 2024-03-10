@@ -5,24 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Around the US</title>
-    <link href="./pages/index.css" rel="stylesheet" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
         <img
-          src="./images/logo.svg"
+          src="<%=require('./images/logo.svg')%>"
           alt="Around the U.S logo"
           class="header__logo"
         />
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            src="./images/jacquesCousteau.jpg"
-            alt="Profile photo"
-            class="profile__image"
-          />
+          <img src="<%=require("./images/jacquesCousteau.jpg")%>" alt="Profile
+          photo" class="profile__image" />
           <div class="profile__info">
             <div class="profile__name">
               <h1 class="profile__title">Jacques Cousteau</h1>
@@ -53,7 +49,7 @@
           <label class="modal__field__container">
             <input
               type="text"
-              name="title"
+              name="name"
               placeholder="Name"
               class="modal__field modal__input profile__title__input"
               id="owner-name"
@@ -66,7 +62,7 @@
           <label class="modal__field__container">
             <input
               type="text"
-              name="description"
+              name="job"
               placeholder="Description"
               id="owner-description"
               class="modal__field modal__input profile__description__input"
@@ -136,6 +132,5 @@
         </div>
       </li>
     </template>
-    <script src="./pages/index.js" type="module"></script>
   </body>
 </html>
