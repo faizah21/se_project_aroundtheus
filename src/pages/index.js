@@ -1,5 +1,3 @@
-// import Card from "../../components/Card.js";
-
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import Constants, { config } from "../utils.js/constants";
@@ -66,8 +64,6 @@ function handleImageClick(imageName, imageLink) {
   imagePopup.open({ name: imageName, link: imageLink });
 }
 
-addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
-
 //add new card button
 
 const profileFormValidate = new FormValidator(profileEditForm, config);
@@ -85,22 +81,19 @@ const cardPopup = new PopupWithForm({
     handleAddCardFormSubmit(data);
   },
 });
+cardPopup.setEventListeners();
 
 addNewCardBtn.addEventListener("click", () => {
   cardPopup.open();
 });
-cardPopup._closeButton.addEventListener("click", () => {
-  cardPopup.close();
-});
 
 function handleAddCardFormSubmit(e) {
-  e.preventDefault();
   const name = cardTitleInput.value;
   const link = cardTitleUrl.value;
   const cardElement = renderCard({ name, link });
   cardsWrap.addItem(cardElement);
   cardPopup.close();
-  e.target.reset();
+  cardPopup.form.reset();
   cardFormValidate.toggleButtonState();
 }
 
@@ -110,6 +103,12 @@ const userInfo = new UserInfo({
   jobSelector: ".profile__description",
 });
 
+const profileEditPopup = new PopupWithForm({
+  popupSelector: "#profile-edit-modal",
+  handleFormSubmit: handleProfileEditSubmit,
+});
+profileEditPopup.setEventListeners();
+
 function handleProfileEditSubmit(formData) {
   const newName = profileTitleInput.value;
   const newJob = profileDescriptionInput.value;
@@ -117,21 +116,9 @@ function handleProfileEditSubmit(formData) {
   profileEditPopup.close();
 }
 
-const profileEditPopup = new PopupWithForm({
-  popupSelector: "#profile-edit-modal",
-  handleFormSubmit: handleProfileEditSubmit,
-});
-profileEditPopup.setEventListeners();
-
 profileEditBtn.addEventListener("click", () => {
   const { name, job } = userInfo.getUserInfo();
   profileTitleInput.value = name;
   profileDescriptionInput.value = job;
   profileEditPopup.open();
-});
-
-profileEditForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  const formData = profileEditPopup._getInputValues();
-  profileEditPopup._handleFormSubmit(formData);
 });
