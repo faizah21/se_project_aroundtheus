@@ -9,8 +9,6 @@ import "../pages/index.css";
 //profile selectors:
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileTitle = document.querySelector(".profile__title");
-const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector(".profile__title__input");
 const profileDescriptionInput = document.querySelector(
   ".profile__description__input"
@@ -20,26 +18,12 @@ const profileEditForm = profileEditModal.querySelector(".modal__form");
 //card selectors
 const addNewCardBtn = document.querySelector(".profile__add-button");
 const addCardFormElement = document.querySelector("#add-card-form");
-const cardsWrapper = document.querySelector(".cards__list");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
-
 const cardTitleInput = addCardFormElement.querySelector(
   ".modal__input_type_title"
 );
-
 const cardTitleUrl = addCardFormElement.querySelector(".modal__input_type_url");
-//imports
 const constants = new Constants();
 
-//modal selectors
-const closeProfileModal = document.querySelector("#modal-close");
-const imageModal = document.querySelector("#image-modal");
-const modalImageElement = imageModal.querySelector(".modal__image");
-const modalDescription = imageModal.querySelector(".modal__description");
-const imageOpenedModal = document.querySelector("#add-card-modal");
-const closeImageModal = document.querySelector("#close-image");
-const addCardModal = document.querySelector("#add-card-modal");
 
 function renderCard(cardData) {
   const { name, link } = cardData;
@@ -64,7 +48,6 @@ function handleImageClick(imageName, imageLink) {
   imagePopup.open({ name: imageName, link: imageLink });
 }
 
-//add new card button
 
 const profileFormValidate = new FormValidator(profileEditForm, config);
 
@@ -72,8 +55,6 @@ const cardFormValidate = new FormValidator(addCardFormElement, config);
 
 cardFormValidate.enableValidation();
 profileFormValidate.enableValidation();
-
-//NEw Code for opening popup
 
 const cardPopup = new PopupWithForm({
   popupSelector: "#add-card-modal",
@@ -83,9 +64,6 @@ const cardPopup = new PopupWithForm({
 });
 cardPopup.setEventListeners();
 
-addNewCardBtn.addEventListener("click", () => {
-  cardPopup.open();
-});
 
 function handleAddCardFormSubmit(e) {
   const name = cardTitleInput.value;
@@ -96,6 +74,9 @@ function handleAddCardFormSubmit(e) {
   cardPopup.form.reset();
   cardFormValidate.toggleButtonState();
 }
+addNewCardBtn.addEventListener("click", () => {
+  cardPopup.open();
+});
 
 //UserInfo
 const userInfo = new UserInfo({
