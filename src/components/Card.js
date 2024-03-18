@@ -7,7 +7,7 @@ export default class Card {
     handleLikeClick,
     handleUnlikeClick
   ) {
-    this._id = _id;
+    this.id = _id;
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
@@ -47,7 +47,7 @@ export default class Card {
   _setLikeButtonState() {
     this.isLiked ? this.addLike() : this.removeLike();
   }
-  _deleteCard = () => {
+  deleteCard = () => {
     this._cardElement.remove();
     this._cardElement = null;
   };

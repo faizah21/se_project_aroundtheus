@@ -4,21 +4,37 @@ export default class PopupWithForm extends Popup {
   constructor({ popupSelector, handleFormSubmit }) {
     super(popupSelector);
     this._handleFormSubmit = handleFormSubmit;
-    this._form = this._popup.querySelector(".modal__form");
+    this.form = this._popup.querySelector(".modal__form");
+    this._inputList = this.form.querySelectorAll(".modal__input");
+    this.setEventListeners();
+  }
+  _getInputValues() {
+    const formValues = {};
+    this._inputList.forEach((input) => {
+      formValues[input.name] = input.value;
+    });
+    return formValues;
+  }
+
+  setInputValues(userInfo) {
+    //userInfo.name, userInfo.description
+    const userArray = Object.values(userInfo);
+    for (let i = 0; i < userArray.length; i++) {
+      this._inputList[i].value = userArray[i];
+    }
   }
 
   setEventListeners() {
+    this.form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      this._handleFormSubmit(this._getInputValues());
+    
+    });
     super.setEventListeners();
-    this._form.addEventListener("submit", (evt) => this._handleSubmit(evt));
   }
 
-  _handleSubmit = (evt) => {
-    evt.preventDefault();
-    // const formData = this._getInputValues();
-    // this._handleFormSubmit(formData);
-    this.close();
-  };
+
   setButtonText(buttonText) {
-    this._form.querySelector(".modal__button").textContent = buttonText;
+    this.form.querySelector(".modal__button").textContent = buttonText;
   }
 }
