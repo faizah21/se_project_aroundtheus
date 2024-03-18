@@ -23,13 +23,13 @@ export default class API {
     }).then((res) => this._checkResponse(res));
   }
 
-  updateUserInfo({ title, description }) {
+  updateUserInfo({ name, job }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: title,
-        about: description,
+        name: name,
+        about: job,
       }),
     }).then((res) => this._checkResponse(res));
   }

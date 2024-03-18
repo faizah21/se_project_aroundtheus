@@ -16,21 +16,22 @@
         />
       </header>
       <main class="content">
-        <section class="profile page__section profile_avatar_container">
-          <img src="<%=require("./images/jacquesCousteau.jpg")%>" alt="Profile
-          photo" class="profile__image" />
-          <button class="profile_image_edit_button"></button>
-
+        <section class="profile page__section">
+          <div class="profile_avatar_container">
+            <img src="<%=require("./images/jacquesCousteau.jpg")%>" alt="Profile
+            photo" class="profile__image" />
+            <button class="profile_image_edit_button"></button>
+          </div>
           <div class="profile__info">
             <div class="profile__name">
-              <h1 class="profile__title">Jacques Cousteau</h1>
+              <h1 class="profile__title"></h1>
               <button
                 type="button"
                 class="profile__edit-button"
                 id="profile-edit-button"
               ></button>
             </div>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description"></p>
           </div>
           <button type="button" class="profile__add-button"></button>
         </section>
@@ -147,8 +148,6 @@
         <form class="modal__form" id="change-picture-form">
           <label class="modal__field__container">
             <input
-              name="title"
-              placeholder="Title"
               class="modal__field modal__input_type_title modal__input"
               id="card-title"
               type="url"
