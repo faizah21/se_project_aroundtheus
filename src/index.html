@@ -17,18 +17,24 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img src="<%=require("./images/jacquesCousteau.jpg")%>" alt="Profile
-          photo" class="profile__image" />
+          <div class="profile_avatar_container">
+            <img
+              alt="Profile
+            photo"
+              class="profile__image"
+            />
+            <button class="profile_image_edit_button"></button>
+          </div>
           <div class="profile__info">
             <div class="profile__name">
-              <h1 class="profile__title">Jacques Cousteau</h1>
+              <h1 class="profile__title"></h1>
               <button
                 type="button"
                 class="profile__edit-button"
                 id="profile-edit-button"
               ></button>
             </div>
-            <p class="profile__description">Explorer</p>
+            <p class="profile__description"></p>
           </div>
           <button type="button" class="profile__add-button"></button>
         </section>
@@ -121,7 +127,49 @@
         <p class="modal__description"></p>
       </div>
     </div>
-
+    <!-- Are you sure? Card modal  -->
+    <div class="modal" id="delete-card-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="modal-close"></button>
+        <p class="modal__heading delete__modal">Are you sure?</p>
+        <form class="modal__form" id="delete-card-confirmation-form">
+          <button
+            type="submit"
+            class="modals__button modal__button"
+            id="delete-button"
+          >
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Change Profile Pic -->
+    <div class="modal" id="change-picture-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="modal-close"></button>
+        <p class="modal__heading delete__modal">Change Profile Picture</p>
+        <form class="modal__form" id="change-picture-form">
+          <label class="modal__field__container">
+            <input
+              class="modal__field modal__input_type_title modal__input"
+              id="card-title"
+              type="url"
+              name="avatar"
+              placeholder="Image-URL"
+              required
+            />
+            <span class="modal__error" id="card-title-error"></span>
+          </label>
+          <button
+            type="submit"
+            class="modals__button modal__button"
+            id="delete-button"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
     <template id="card-template">
       <li class="card">
         <img src="" alt="" class="card__image" />

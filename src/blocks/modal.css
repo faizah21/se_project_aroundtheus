@@ -117,6 +117,9 @@
 .modal__field__container {
   position: relative;
 }
+.delete__modal {
+  margin-bottom: 20px;
+}
 @media screen and (max-width: 600px) {
   .modal__container {
     width: 282px;
