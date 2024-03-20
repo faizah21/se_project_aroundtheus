@@ -117,7 +117,9 @@
   .profile__image {
     margin-right: 0;
   }
-
+  .profile_avatar_container .profile_image_edit_button {
+    left: 55%;
+  }
   .profile__title {
     font-size: 22px;
     line-height: 27px;
