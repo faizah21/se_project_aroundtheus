@@ -15,6 +15,7 @@ export default class Card {
     this._handleDeleteClick = handleDeleteClick;
     this._handleLikeClick = handleLikeClick;
     this._handleUnlikeClick = handleUnlikeClick;
+    this.isLiked = isLiked;
   }
 
   _setEventListeners() {
