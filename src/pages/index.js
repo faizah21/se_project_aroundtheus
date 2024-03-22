@@ -76,7 +76,7 @@ const cardPopup = new PopupWithForm({
 cardPopup.setEventListeners();
 
 function handleAddCardFormSubmit(data) {
-  console.log("Submitting add card form...");
+  cardPopup.setButtonText("Saving...");
 
   const cardData = { name: data.title, link: data.url };
 
@@ -133,10 +133,10 @@ profileEditBtn.addEventListener("click", () => {
   const profileuserInfo = userInfo.getUserInfo();
   profileTitleInput.value = name;
   profileDescriptionInput.value = job;
-  profileFormValidate.enableValidation();
   profileEditPopup.setInputValues(profileuserInfo);
   profileEditPopup.open();
 });
+profileFormValidate.enableValidation();
 
 const deleteConfirmationModal = new PopupWithConfirmation("#delete-card-modal");
 
